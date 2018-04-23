@@ -7,7 +7,7 @@ const Content = styled.div`
     padding: 9px 13px;
     width: 30%;
     position: relative;
-    margin: 1px;
+    margin-top: 50px;
     border: none;
     text-align: center;
     box-shadow: 0px 10px 12px rgba(0,0,0,0.2);

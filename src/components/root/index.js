@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import {Provider} from 'react-redux'
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom'
 import baseStyles from './base-styles'
+import '../../assets/styles/style.css'
 import PrivateRoute from '../private-route'
 import Header from '../layout/header'
 import Content from '../layout/styled-components/content'
 import Login from '../../containers/views/login/login'
+import Admin from '../../containers/views/admin/admin'
 import Home from '../../containers/views/home/home'
 import Post from '../../containers/views/post/post'
 
@@ -20,7 +22,7 @@ const Root = ({store}) => {
                     <Switch>
                         <Route exact path="/login" component={Login}/>
                         <PrivateRoute path="/post" component={Post}/>
-                        <PrivateRoute path="/" component={Home}/>
+                        <PrivateRoute path="/admin" component={Admin}/>
                     </Switch>
                 </Content>
             </div>

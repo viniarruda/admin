@@ -8,7 +8,10 @@ const Header = (props) => {
     return (
         <NavBar title='TestSite' >
             <NavLink to='/'>Home</NavLink>
-            <NavLink to='/post'>Post</NavLink>
+            {
+                props.auth.logged ?
+                    <NavLink to='/admin'>Admin</NavLink> : ''
+            }
             {
                 props.auth.logged ?
                     <NavLink to='/' onClick={props.logout}>Logout</NavLink>

@@ -11,7 +11,7 @@ import Image from '../../../components/layout/styled-components/login/image'
 import iconPerson from '../../../assets/images/user-shape.png'
 
 const Login = (props) => {
-    const {from} = props.location.state || {from: {pathname: "/"}};
+    const {from} = props.location.state || {from: {pathname: "/admin"}};
 
     if (props.auth.logged) {
         return <Redirect to={from}/>;
