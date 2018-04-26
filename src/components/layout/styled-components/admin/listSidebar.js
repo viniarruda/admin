@@ -31,7 +31,7 @@ const Redirect = styled(Link)`
     text-decoration: none;
     &:hover {
         text-decoration: none;
-        color: #359094;
+        color: #fff;
     }
 `;
 
@@ -39,8 +39,8 @@ const List = () => (
     <Ul>
         <Li active><Redirect to="/admin"><FontAwesomeIcon icon={faHome}/><Text>Dashboard</Text></Redirect></Li>
         <Li><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser}/><Text>Cadastrar usuário</Text></Redirect></Li>
-        <Li><Redirect to="/pessoas"><FontAwesomeIcon icon={faUsers}/><Text>Cadastrar pessoas</Text></Redirect></Li>
-        <Li><Redirect to="/cargos"><FontAwesomeIcon icon={faPosition}/><Text>Cadastrar cargos</Text></Redirect></Li>
+        <Li><Redirect to="/admin/pessoas"><FontAwesomeIcon icon={faUsers}/><Text>Cadastrar pessoas</Text></Redirect></Li>
+        <Li><Redirect to="/admin/cargos"><FontAwesomeIcon icon={faPosition}/><Text>Cadastrar cargos</Text></Redirect></Li>
     </Ul>
 );
 

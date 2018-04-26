@@ -65,12 +65,12 @@ const validate = values => {
 }
 
 const renderField = ({
-                         input,
-                         label,
-                         type,
-                         placeholder,
-                         meta: { touched, error }
-                     }) => (
+         input,
+         label,
+         type,
+         placeholder,
+         meta: { touched, error }
+     }) => (
     <div>
         <Input {...input} placeholder={placeholder} type={type} />
         {touched &&
@@ -79,7 +79,7 @@ const renderField = ({
     </div>
 )
 
-const UserForm = props => {
+const FormCustomer = props => {
     const { handleSubmit, pristine, submitting } = props
     return (
         <Form onSubmit={handleSubmit}>
@@ -89,6 +89,12 @@ const UserForm = props => {
                 type="text"
                 placeholder="Digite o username"
             />
+            <Field name="position" component="select">
+                <option value="0">Cargo</option>
+                <option value="ff0000">Gerente</option>
+                <option value="00ff00">Coordenador</option>
+                <option value="0000ff">Diretor</option>
+            </Field>
             <Field
                 name="password"
                 component={renderField}
@@ -104,6 +110,6 @@ const UserForm = props => {
 }
 
 export default reduxForm({
-    form: 'users',
+    form: 'customer',
     validate
-})(UserForm)
+})(FormCustomer)

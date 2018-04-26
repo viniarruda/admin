@@ -7,6 +7,8 @@ import Container from '../../../components/layout/styled-components/admin/contai
 import Sidebar from '../../../components/layout/styled-components/admin/sidebar'
 import ListSidebar from '../../../components/layout/styled-components/admin/listSidebar'
 import Users from '../../../components/admin/users/users'
+import Persons from '../../../components/admin/persons/persons'
+import Positions from '../../../components/admin/positions/positions'
 
 
 const Admin = () => (
@@ -29,8 +31,8 @@ const Dashboard = () => {
 const Content = () => (
   <Switch>
       <Route path="/admin/usuarios" component={Users} />
-      {/*<Route path="/pessoas" component={Persons} />*/}
-      {/*<Route path="/cargos" component={Positions} />*/}
+      <Route path="/admin/pessoas" component={Persons} />
+      <Route path="/admin/cargos" component={Positions} />
       <Route path="/admin" component={Dashboard} />
   </Switch>
 );
