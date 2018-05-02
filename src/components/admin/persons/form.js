@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Form = styled.form`
     margin: 0 auto;
-    padding: 3% 0 9% 0;
+    padding: 6% 0 9% 0;
 `;
 
 const Input = styled.input`
@@ -65,12 +65,12 @@ const validate = values => {
 }
 
 const renderField = ({
-         input,
-         label,
-         type,
-         placeholder,
-         meta: { touched, error }
-     }) => (
+                         input,
+                         label,
+                         type,
+                         placeholder,
+                         meta: { touched, error }
+                     }) => (
     <div>
         <Input {...input} placeholder={placeholder} type={type} />
         {touched &&
@@ -79,7 +79,7 @@ const renderField = ({
     </div>
 )
 
-const FormCustomer = props => {
+const UserForm = props => {
     const { handleSubmit, pristine, submitting } = props
     return (
         <Form onSubmit={handleSubmit}>
@@ -89,12 +89,6 @@ const FormCustomer = props => {
                 type="text"
                 placeholder="Digite o username"
             />
-            <Field name="position" component="select">
-                <option value="0">Cargo</option>
-                <option value="ff0000">Gerente</option>
-                <option value="00ff00">Coordenador</option>
-                <option value="0000ff">Diretor</option>
-            </Field>
             <Field
                 name="password"
                 component={renderField}
@@ -110,6 +104,6 @@ const FormCustomer = props => {
 }
 
 export default reduxForm({
-    form: 'customer',
+    form: 'users',
     validate
-})(FormCustomer)
+})(UserForm)

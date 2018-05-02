@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Form = styled.form`
     margin: 0 auto;
-    padding: 6% 0 9% 0;
+    padding: 3% 0 9% 0;
 `;
 
 const Input = styled.input`

@@ -6,7 +6,7 @@ import NavLink from "./styled-components/nav-link";
 
 const Header = (props) => {
     return (
-        <NavBar title='TestSite' >
+        <NavBar title='Cesta Web' >
             <NavLink to='/'>Home</NavLink>
             {
                 props.auth.logged ?

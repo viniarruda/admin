@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import FormEmployee from './formEmployee'
 import FormCustomer from './formCustomer'
@@ -13,22 +13,47 @@ const Container = styled.div`
 
 const Tab = styled.div`
     border: 1px solid #10ACC2;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
     margin: 0 10px;
+    cursor: pointer;
 `;
 
-state = { show: 0 }
-const Persons = () => (
-    <Container>
-        <Title>Cadastro de pessoas</Title>
-        <div>
-            <span onClick={this.setState({show: 0})}>Employee</span>
-            <span onClick={this.setState({show: 1})}>Customer</span>
-        </div>
-        {console.log('state', show)}
-        <FormEmployee />
-        <FormCustomer />
-    </Container>
-);
+class Persons extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            show: 0
+        }
+    }
+
+    showEmployee() {
+        this.setState({
+            show: 0
+        })
+    }
+
+    showCustomer() {
+        this.setState({
+            show: 1
+        })
+    }
+
+    render() {
+        return (
+            <Container>
+                <Title>Cadastro de pessoas</Title>
+                <div>
+                    <Tab onClick={this.showEmployee.bind(this)}>Employee</Tab>
+                    <Tab onClick={this.showCustomer.bind(this)}>Customer</Tab>
+                </div>
+                {
+                    this.state.show === 0 ? <FormEmployee /> : <FormCustomer />
+                }
+            </Container>
+        )
+    }
+}
 
 export default Persons
