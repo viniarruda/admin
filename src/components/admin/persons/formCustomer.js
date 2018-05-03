@@ -3,10 +3,10 @@ import { Field, reduxForm } from 'redux-form'
 import styled from 'styled-components'
 
 const Form = styled.form`
-    margin: 0 auto;
+    margin: 25px auto;
 `;
 
-const select = styled.select`
+const Select = styled.select`
     position: relative;
     padding: 10px;
     background: #D3D3D3;
@@ -14,14 +14,11 @@ const select = styled.select`
     color: #676767;
     font-weight: 600;
     font-size: 16px;
-    outline: none;
     border: none;
     border-radius: 5px;
     border: 1px solid #DED6D6;
-    -webkit-appearance: none;
     display: inline-block;
-    width: 50%;
-    margin: 0px -0.3rem 20px -0.3rem;  
+    width: 50%; 
 `;
 
 const Input = styled.input`
@@ -102,7 +99,7 @@ const FormCustomer = props => {
     return (
         // <Form onSubmit={handleSubmit} initialValues={user || {}}>
         <Form onSubmit={handleSubmit}>
-            <Field name="position" component="select">
+            <Field name="position" component={Select}>
                 <option value="0">Cargo</option>
                 <option value="ff0000">Gerente</option>
                 <option value="00ff00">Coordenador</option>

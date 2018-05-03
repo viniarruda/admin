@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import styled from 'styled-components'
 
 const Form = styled.form`
-    margin: 0 auto;
+    margin: 25px auto;
 `;
 
 const Input = styled.input`

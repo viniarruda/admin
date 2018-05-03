@@ -16,7 +16,6 @@ const Ul = styled.ul`
 
 const Li = styled.li`
     padding: 6px 10px;
-    background-color: ${props => props.active ? '#10ACC2' : ''};
     border-bottom: 1px solid #d6d6d6;
 `;
 
@@ -39,8 +38,8 @@ const Redirect = styled(Link) `
 const List = () => (
     <Ul>
         <Li><Redirect to="/admin" ><FontAwesomeIcon icon={faHome} /><Text>Dashboard</Text></Redirect></Li>
-        <Li ><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser} /><Text>Cadastrar usuário</Text></Redirect></Li>
-        <Li ><Redirect to="/admin/pessoas"><FontAwesomeIcon icon={faUsers} /><Text>Cadastrar pessoas</Text></Redirect></Li>
+        <Li><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser} /><Text>Cadastrar usuário</Text></Redirect></Li>
+        <Li><Redirect to="/admin/pessoas"><FontAwesomeIcon icon={faUsers} /><Text>Cadastrar pessoas</Text></Redirect></Li>
         <Li><Redirect to="/admin/cargos"><FontAwesomeIcon icon={faPosition} /><Text>Cadastrar cargos</Text></Redirect></Li>
     </Ul>
 );

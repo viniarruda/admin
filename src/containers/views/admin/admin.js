@@ -4,6 +4,10 @@ import {
     Switch
 } from 'react-router-dom'
 import Container from '../../../components/layout/styled-components/admin/container'
+import ContainerDash from '../../../components/layout/styled-components/commons/container'
+import Title from '../../../components/layout/styled-components/title'
+import Grid from '../../../components/layout/styled-components/grid/grid'
+import List from '../../../components/layout/styled-components/grid/list'
 import Sidebar from '../../../components/layout/styled-components/admin/sidebar'
 import ListSidebar from '../../../components/layout/styled-components/admin/listSidebar'
 import Users from '../../../components/admin/users/users'
@@ -22,9 +26,24 @@ const Admin = () => (
 
 const Dashboard = () => {
     return (
-        <div>
-            <h1>MIOLO</h1>
-        </div>
+        <ContainerDash row padding>
+            <Grid>
+                <Title>Users</Title>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+            </Grid>
+            <Grid>
+                <Title>Persons</Title>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+                <List>Lorem Ipsum</List>
+            </Grid>
+        </ContainerDash>
     )
 }
 

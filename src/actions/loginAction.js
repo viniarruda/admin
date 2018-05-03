@@ -2,20 +2,53 @@ import url from '../services/api'
 import { SubmissionError } from 'redux-form'
 import actions from 'redux-form/es/actions'
 
+// export function login(credentials) {
+//     return ( fetch(url + "user_auth",{
+//         method: 'POST',
+//         headers: {
+//             "Content-type": "application/json",
+//             "Access-Control-Allow-Origin": "*",
+//         },
+//         body: {
+//             "login_name": credentials.username,
+//             "password": credentials.password
+//         }
+//     })
+//     )
+// }
+
 export function login(credentials) {
-    return ( fetch(url + "user_auth",{
-        method: 'POST',
-        headers: {
-            "Content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-        },
-        body: {
-            "login_name": credentials.username,
-            "password": credentials.password
-        }
+    return ( new Promise((resolve) => {
+        fetch(url + "user_auth", {
+            method: 'POST',
+            header: {
+                "Content-type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Cache-Control": "no-cache",
+                "mode":"no-cors"
+            },
+            body: {
+                "login_name": credentials.username,
+                "password": credentials.password
+            }
+        })
+        .then(response =>{
+            if(!response.ok) {
+                // throw Error("Failed")
+                console.log('Error')
+            }
+            return response
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log('resssssss', res)
+            resolve(res.data)
+        })
+        .catch(res => res.error)
     })
-    )
+    ) //End return 
 }
+
 
 export const requestLogin = (credentials) => async dispatch => {
     const response = await login(credentials)
