@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {login} from "../../../actions/auth"
@@ -12,31 +12,40 @@ import Image from '../../../components/layout/styled-components/login/image'
 import iconPerson from '../../../assets/images/user-shape.png'
 
 
-const handleSubmit = ({username, password}) => {
-    console.log(username, password)
-}
-
-const Login = (props) => {
-    const {from} = props.location.state || {from: {pathname: "/admin"}};
-
-    if (props.auth.logged) {
-        return <Redirect to={from}/>;
+class Login extends Component {
+    constructor(props){
+        super(props)
+        
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    return (
-        <div>
-            <Container>
-                <Content gray>
-                    {/*{<Title>Você precisa estar logado para acessar: {from.pathname}</Title>}*/}
-                    <Head>
-                        <Image src={iconPerson} />
-                        <Title blue>Login</Title>
-                    </Head>
-                    <LoginForm onSubmit={handleSubmit} />
-                </Content>
-            </Container>
-        </div>
-    );
+    handleSubmit({username, password}) {
+        this.props.requestLogin({username, password})
+    }
+
+    render() {
+        const {from} = this.props.location.state || {from: {pathname: "/admin"}};
+
+        if (this.props.auth.logged) {
+            return <Redirect to={from}/>;
+        }
+
+        return (
+            <div>
+                <Container>
+                    <Content gray>
+                        {/*{<Title>Você precisa estar logado para acessar: {from.pathname}</Title>}*/}
+                        <Head>
+                            <Image src={iconPerson} />
+                            <Title blue>Login</Title>
+                        </Head>
+                        <LoginForm onSubmit={this.handleSubmit} />
+                    </Content>
+                </Container>
+            </div>
+        );
+    }
+    
 };
 
 const mapStateToProps = (state) => ({

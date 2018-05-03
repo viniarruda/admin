@@ -27,7 +27,7 @@ export function login(username, password) {
                 .then(res => {
                     resolve(res.data)
                 })
-                .catch((err)=>console.log(err))
+                .catch(err => err.response.data)
             })
         })
     }
@@ -35,7 +35,7 @@ export function login(username, password) {
 
 export const requestLogin = (credentials) => async dispatch => {
     const response = await login(credentials)
-
+    console.log(response)
     if (response.error) {
         dispatch(errorAuthLogin(response.error.message))
         throw new SubmissionError({_error: response.error.message})
