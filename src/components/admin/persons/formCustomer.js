@@ -82,6 +82,7 @@ const renderField = ({
 const FormCustomer = props => {
     const { handleSubmit, pristine, submitting } = props
     return (
+        // <Form onSubmit={handleSubmit} initialValues={user || {}}>
         <Form onSubmit={handleSubmit}>
             <Field
                 name="username"
