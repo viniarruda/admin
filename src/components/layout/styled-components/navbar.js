@@ -7,7 +7,8 @@ const Nav = styled.div`
     display: flex;
     align-items: center;
     padding: 0 20px;    
-    background: #f8f9fa;
+    box-shadow: 0px 4px 20px #cfcfcf;
+    background: linear-gradient(45deg,#0d9eb2,#56dbee);
     position: ${props => props.fixed ? 'fixed' : 'relative'};
 `;
 

@@ -24,7 +24,7 @@ const Text = styled.span`
     margin-left: 10px
 `;
 
-const Redirect = styled(Link)`
+const Redirect = styled(Link) `
     padding: 10px 5px;
     color: #000;
     display: block;
@@ -37,10 +37,10 @@ const Redirect = styled(Link)`
 
 const List = () => (
     <Ul>
-        <Li active><Redirect to="/admin"><FontAwesomeIcon icon={faHome}/><Text>Dashboard</Text></Redirect></Li>
-        <Li><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser}/><Text>Cadastrar usuário</Text></Redirect></Li>
-        <Li><Redirect to="/admin/pessoas"><FontAwesomeIcon icon={faUsers}/><Text>Cadastrar pessoas</Text></Redirect></Li>
-        <Li><Redirect to="/admin/cargos"><FontAwesomeIcon icon={faPosition}/><Text>Cadastrar cargos</Text></Redirect></Li>
+        <Li><Redirect to="/admin" ><FontAwesomeIcon icon={faHome} /><Text>Dashboard</Text></Redirect></Li>
+        <Li ><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser} /><Text>Cadastrar usuário</Text></Redirect></Li>
+        <Li ><Redirect to="/admin/pessoas"><FontAwesomeIcon icon={faUsers} /><Text>Cadastrar pessoas</Text></Redirect></Li>
+        <Li><Redirect to="/admin/cargos"><FontAwesomeIcon icon={faPosition} /><Text>Cadastrar cargos</Text></Redirect></Li>
     </Ul>
 );
 
