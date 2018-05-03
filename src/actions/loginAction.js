@@ -2,35 +2,19 @@ import url from '../services/api'
 import { SubmissionError } from 'redux-form'
 import actions from 'redux-form/es/actions'
 
-export function login(username, password) {
-    return (dispatch, getState) => {
-        dispatch({
-            type: 'LOGIN',
-            payload: new Promise((resolve) => {
-                fetch(url + "user_auth",{
-                    headers: {
-                        "method": "POST",
-                    },
-                    body: {
-                        "login_name": username,
-                        "passsword": password
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        resolve(null)
-                    } else {
-                        return response
-                    }
-                })
-                .then(res => res.json())
-                .then(res => {
-                    resolve(res.data)
-                })
-                .catch(err => err.response.data)
-            })
-        })
-    }
+export function login(credentials) {
+    return ( fetch(url + "user_auth",{
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: {
+            "login_name": credentials.username,
+            "password": credentials.password
+        }
+    })
+    )
 }
 
 export const requestLogin = (credentials) => async dispatch => {
@@ -41,14 +25,14 @@ export const requestLogin = (credentials) => async dispatch => {
         throw new SubmissionError({_error: response.error.message})
     }
 
-    const {token, login_name} = response.data
+    const {token, user} = response.data
     actions.reset('loginForm')
 
     dispatch(login())
     dispatch(fetchAuthLogin(token))
 }
 
-export const fetchAuthLogin = payload => {
+export const fetchAuthLogin = (payload) => {
     return {
       type: 'AUTH_LOGIN_FULFILLED',
       payload
