@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Cards = styled.div`
 {
 
-    padding: 10px 15px;
+    padding: 20px 15px;
     width: 100%;
     position: relative;
     max-height: 100%;

@@ -9,7 +9,6 @@ const Positions = () => (
         <Breadcrumbs title="Cadastro Cargos"></Breadcrumbs>
         <Cards>
             <div>
-                <h1>Positions</h1>
                 <Form />
             </div>
         </Cards>

@@ -4,14 +4,13 @@ import styled from 'styled-components'
 
 const Form = styled.form`
     margin: 0 auto;
-    padding: 3% 0 9% 0;
 `;
 
 const Input = styled.input`
     position: relative;
-    padding: 3%;
+    padding: 10px;
     background: #D3D3D3;
-    margin-bottom: 6%;
+    margin-bottom: 20px;
     color: #676767;
     font-weight: 600;
     font-size: 16px;
@@ -20,11 +19,13 @@ const Input = styled.input`
     border-radius: 5px;
     border: 1px solid #DED6D6;
     -webkit-appearance: none;
+    display: inline-block;
+    width: 50%;
+    margin: 0px -0.3rem 20px -0.3rem;  
 `;
 
 const Submit = styled.button`
-    padding: 3%;
-    margin-bottom: 8%;
+    padding: 10px 15px;
     background: #10ACC2;
     color: #ECECEC;
     box-shadow: inset 0px 0px 5px #666464;

@@ -4,14 +4,13 @@ import styled from 'styled-components'
 
 const Form = styled.form`
     margin: 0 auto;
-    padding: 3% 0 9% 0;
 `;
 
-const Input = styled.input`
+const select = styled.select`
     position: relative;
-    padding: 3%;
+    padding: 10px;
     background: #D3D3D3;
-    margin-bottom: 6%;
+    margin-bottom: 20px;
     color: #676767;
     font-weight: 600;
     font-size: 16px;
@@ -20,11 +19,31 @@ const Input = styled.input`
     border-radius: 5px;
     border: 1px solid #DED6D6;
     -webkit-appearance: none;
+    display: inline-block;
+    width: 50%;
+    margin: 0px -0.3rem 20px -0.3rem;  
+`;
+
+const Input = styled.input`
+    position: relative;
+    padding: 10px;
+    background: #D3D3D3;
+    margin-bottom: 20px;
+    color: #676767;
+    font-weight: 600;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #DED6D6;
+    -webkit-appearance: none;
+    display: inline-block;
+    width: 50%;
+    margin: 0px -0.3rem 20px -0.3rem;  
 `;
 
 const Submit = styled.button`
-    padding: 3%;
-    margin-bottom: 8%;
+    padding: 10px 15px;
     background: #10ACC2;
     color: #ECECEC;
     box-shadow: inset 0px 0px 5px #666464;
@@ -46,7 +65,6 @@ const Submit = styled.button`
         cursor: not-allowed;
     }
 `;
-
 const Error = styled.span`
     color: #db2626;
     display: block;
@@ -83,18 +101,18 @@ const FormCustomer = props => {
     const { handleSubmit, pristine, submitting } = props
     return (
         <Form onSubmit={handleSubmit}>
-            <Field
-                name="username"
-                component={renderField}
-                type="text"
-                placeholder="Digite o username"
-            />
             <Field name="position" component="select">
                 <option value="0">Cargo</option>
                 <option value="ff0000">Gerente</option>
                 <option value="00ff00">Coordenador</option>
                 <option value="0000ff">Diretor</option>
             </Field>
+            <Field
+                name="username"
+                component={renderField}
+                type="text"
+                placeholder="Digite o username"
+            />
             <Field
                 name="password"
                 component={renderField}

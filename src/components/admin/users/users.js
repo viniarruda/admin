@@ -12,7 +12,6 @@ const Users = () => (
     <Container>
         <Breadcrumbs title="Cadastro Cargos"></Breadcrumbs>
         <Cards>
-            <Title>Cadastro de usuários</Title>
             <Form />
         </Cards>
     </Container>
