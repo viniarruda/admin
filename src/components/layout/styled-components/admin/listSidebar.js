@@ -15,7 +15,7 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-    padding: 10px;
+    padding: 6px 10px;
     background-color: ${props => props.active ? '#10ACC2' : ''};
     border-bottom: 1px solid #d6d6d6;
 `;
@@ -26,12 +26,13 @@ const Text = styled.span`
 
 const Redirect = styled(Link) `
     padding: 10px 5px;
+    font-size: 14px;
     color: #000;
     display: block;
     text-decoration: none;
+    transition: 0.2s color;
     &:hover {
-        text-decoration: none;
-        color: #fff;
+        color: #1aa9bc;
     }
 `;
 
