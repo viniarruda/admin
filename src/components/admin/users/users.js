@@ -2,18 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import Form from './form'
 import Title from '../../layout/styled-components/title'
+import Breadcrumbs from '../../../components/layout/styled-components/commons/breadcrumb'
+import Cards from '../../../components/layout/styled-components/commons/cards'
+import Container from '../../../components/layout/styled-components/commons/container'
 
-const Container = styled.div`
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    text-align: center;
-`;
+
 
 const Users = () => (
     <Container>
-        <Title>Cadastro de usuários</Title>
-        <Form />
+        <Breadcrumbs title="Cadastro Cargos"></Breadcrumbs>
+        <Cards>
+            <Title>Cadastro de usuários</Title>
+            <Form />
+        </Cards>
     </Container>
 );
 

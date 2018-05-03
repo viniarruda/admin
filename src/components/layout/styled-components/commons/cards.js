@@ -15,6 +15,10 @@ const Cards = styled.div`
     text-align: center;
     box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
     background-color: #ffffff;
+    transition: box-shadow 0.3s ease-in-out;
+    &:hover{
+        box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+    }
 }
 `;
 

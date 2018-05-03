@@ -9,9 +9,9 @@ import faPosition from '@fortawesome/fontawesome-free-solid/faGraduationCap'
 import colors from "../commons/colors";
 
 const Ul = styled.ul`
-  background-color: #e6e6e;
-  width: 200px;
-  height: 100vh;
+    background-color: #e6e6e;
+    width: 200px;
+    height: calc( 100vh - 50px);
 `;
 
 const Li = styled.li`

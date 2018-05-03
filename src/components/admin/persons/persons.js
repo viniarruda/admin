@@ -3,13 +3,9 @@ import styled from 'styled-components'
 import FormEmployee from './formEmployee'
 import FormCustomer from './formCustomer'
 import Title from '../../layout/styled-components/title'
-
-const Container = styled.div`
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    text-align: center;
-`;
+import Breadcrumbs from '../../../components/layout/styled-components/commons/breadcrumb'
+import Cards from '../../../components/layout/styled-components/commons/cards'
+import Container from '../../../components/layout/styled-components/commons/container'
 
 const Tab = styled.div`
     border: 1px solid #10ACC2;
@@ -19,6 +15,7 @@ const Tab = styled.div`
     margin: 0 10px;
     cursor: pointer;
 `;
+
 
 class Persons extends Component {
     constructor(props) {
@@ -41,16 +38,19 @@ class Persons extends Component {
     }
 
     render() {
+
         return (
             <Container>
-                <Title>Cadastro de pessoas</Title>
-                <div>
-                    <Tab onClick={this.showEmployee.bind(this)}>Employee</Tab>
-                    <Tab onClick={this.showCustomer.bind(this)}>Customer</Tab>
-                </div>
-                {
-                    this.state.show === 0 ? <FormEmployee /> : <FormCustomer />
-                }
+                <Breadcrumbs title="Cadastro de Pessoa"></Breadcrumbs>
+                <Cards>
+                    <div>
+                        <Tab onClick={this.showEmployee.bind(this)}>Employee</Tab>
+                        <Tab onClick={this.showCustomer.bind(this)}>Customer</Tab>
+                    </div>
+                    {
+                        this.state.show === 0 ? <FormEmployee /> : <FormCustomer />
+                    }
+                </Cards>
             </Container>
         )
     }
