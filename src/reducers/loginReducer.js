@@ -1,17 +1,24 @@
+const INITIAL_STATE = {
+    user: {},
+    token: null,
+    error: null
+  };
+
 const loginReducer = (state = {token: ''}, action) => {
     switch (action.type) {
-        case 'SIGN_IN':
+        case 'AUTH_LOGIN_FULFILLED':
             return {
                 ...state,
-                token: true
+                ...INITIAL_STATE,
+                token: action.payload,
             }
 
-        case 'SIGN_OUT':
+        case 'AUTH_LOGIN_REJECTED':
             return {
                 ...state,
-                logged: false
+                ...INITIAL_STATE,
+                error: action.payload,
             }
-
         default:
             return state
     }

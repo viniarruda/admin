@@ -108,6 +108,6 @@ const LoginForm = props => {
 }
 
 export default reduxForm({
-    form: 'login',
+    form: 'loginForm',
     validate
 })(LoginForm)
