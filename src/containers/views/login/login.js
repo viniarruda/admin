@@ -20,8 +20,7 @@ class Login extends Component {
     }
 
     handleSubmit({username, password}) {
-        // this.props.requestLogin({username, password})
-        this.props.login()
+        this.props.requestLogin({username, password})
     }
 
     render() {
@@ -49,12 +48,8 @@ class Login extends Component {
     
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    login: () => dispatch(login({}))
-});
-
 const mapStateToProps = (state) => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, {requestLogin})(Login)
