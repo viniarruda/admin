@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -35,13 +35,45 @@ const Redirect = styled(Link) `
     }
 `;
 
-const List = () => (
-    <Ul>
-        <Li><Redirect to="/admin" ><FontAwesomeIcon icon={faHome} /><Text>Dashboard</Text></Redirect></Li>
-        <Li><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser} /><Text>Cadastrar usuário</Text></Redirect></Li>
-        <Li><Redirect to="/admin/pessoas"><FontAwesomeIcon icon={faUsers} /><Text>Cadastrar pessoas</Text></Redirect></Li>
-        <Li><Redirect to="/admin/cargos"><FontAwesomeIcon icon={faPosition} /><Text>Cadastrar cargos</Text></Redirect></Li>
-    </Ul>
-);
+const SubMenu = styled.ul`
+    border-top: 1px solid #d6d6d6;
+    background-color: #e8e8e8;
+    display: ${props => props.show ? 'block' : 'none'};
+`;
 
-export default List
+const SubMenuList = styled.li`
+    padding: 10px 0;
+`;
+
+class List extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            show: ''
+        }
+    }
+
+    openSubMenu() {
+        this.setState({
+            show: 'show'
+        })
+    }
+    
+    render() {
+        return (
+            <Ul>
+                <Li><Redirect to="/admin" ><FontAwesomeIcon icon={faHome} /><Text>Dashboard</Text></Redirect></Li>
+                <Li onClick={this.openSubMenu.bind(this)}><Redirect to="#"><FontAwesomeIcon icon={faUser} /><Text>Cadastrar usuário</Text></Redirect>
+                    <SubMenu {...this.state.show}>
+                        <SubMenuList><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser} /><Text>Cadastrar Cliente</Text></Redirect></SubMenuList>
+                        <SubMenuList><Redirect to="/admin/usuarios"><FontAwesomeIcon icon={faUser} /><Text>Cadastrar Funcionário</Text></Redirect></SubMenuList>
+                    </SubMenu>
+                </Li>
+                <Li><Redirect to="/admin/pessoas"><FontAwesomeIcon icon={faUsers} /><Text>Cadastrar pessoas</Text></Redirect></Li>
+                <Li><Redirect to="/admin/cargos"><FontAwesomeIcon icon={faPosition} /><Text>Cadastrar cargos</Text></Redirect></Li>
+            </Ul>
+        )
+    }
+};
+
+export default List;

@@ -4,13 +4,12 @@ const INITIAL_STATE = {
     error: null
   };
 
-const loginReducer = (state = {token: ''}, action) => {
+const loginReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'AUTH_LOGIN_FULFILLED':
             return {
                 ...state,
-                ...INITIAL_STATE,
-                token: action.payload,
+                ...action.payload,
             }
 
         case 'AUTH_LOGIN_REJECTED':

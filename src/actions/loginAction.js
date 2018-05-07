@@ -1,36 +1,21 @@
 import url from '../services/api'
 import { SubmissionError } from 'redux-form'
 import actions from 'redux-form/es/actions'
+import { login } from './auth'
 
-// export function login(credentials) {
-//     return ( fetch(url + "user_auth",{
-//         method: 'POST',
-//         headers: {
-//             "Content-type": "application/json",
-//             "Access-Control-Allow-Origin": "*",
-//         },
-//         body: {
-//             "login_name": credentials.username,
-//             "password": credentials.password
-//         }
-//     })
-//     )
-// }
-
-export function login(credentials) {
+export function validateLogin(credentials) {
     return ( new Promise((resolve) => {
         fetch(url + "user_auth", {
-            method: 'POST',
-            header: {
-                "Content-type": "application/json",
+            method: "POST",
+            headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Cache-Control": "no-cache",
-                "mode":"no-cors"
+                "Content-type": "application/json",
             },
-            body: {
-                "login_name": credentials.username,
-                "password": credentials.password
-            }
+            body:JSON.stringify({
+                login_name: credentials.username,
+                password: credentials.password , 
+            })
         })
         .then(response =>{
             if(!response.ok) {
@@ -41,28 +26,27 @@ export function login(credentials) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('resssssss', res)
-            resolve(res.data)
+            resolve(res)
         })
-        .catch(res => res.error)
+        .catch(err => err.response.data)
     })
     ) //End return 
 }
 
 
 export const requestLogin = (credentials) => async dispatch => {
-    const response = await login(credentials)
-    console.log(response)
+    const response = await validateLogin(credentials)
+    console.log('response', response)
     if (response.error) {
         dispatch(errorAuthLogin(response.error.message))
         throw new SubmissionError({_error: response.error.message})
     }
 
-    const {token, user} = response.data
+    const {token, user} = response
     actions.reset('loginForm')
 
     dispatch(login())
-    dispatch(fetchAuthLogin(token))
+    dispatch(fetchAuthLogin({token, user}))
 }
 
 export const fetchAuthLogin = (payload) => {
