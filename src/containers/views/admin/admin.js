@@ -1,59 +1,53 @@
-import React from 'react'
-import {
-    Route,
-    Switch
-} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { listCustomers, listEmployees } from '../../../actions/personAction'
+import Content from '../../../components/admin/dashboard/content'
 import Container from '../../../components/layout/styled-components/admin/container'
-import ContainerDash from '../../../components/layout/styled-components/commons/container'
-import Title from '../../../components/layout/styled-components/title'
-import Grid from '../../../components/layout/styled-components/grid/grid'
-import List from '../../../components/layout/styled-components/grid/list'
 import Sidebar from '../../../components/layout/styled-components/admin/sidebar'
 import ListSidebar from '../../../components/layout/styled-components/admin/listSidebar'
-import Users from '../../../components/admin/users/users'
-import Persons from '../../../components/admin/persons/persons'
-import Positions from '../../../components/admin/positions/positions'
+import Loading from '../../../components/layout/styled-components/loading'
 
+class Admin extends Component {
+    constructor(props){
+        super(props)
+    }
+    
+    componentDidMount() {
+        const { listCustomers, listEmployees, auth } = this.props
+        listCustomers(auth.token)
+        listEmployees(auth.token)
+    }
+    
+    render() {
+        const { isPending } = this.props.persons.list
+        return (
+            <Container>
+                <Sidebar>
+                    <ListSidebar />
+                </Sidebar>
+                <Content />
+                <Loading show={isPending}/>
+            </Container>
+        )
+    }
+} 
 
-const Admin = () => (
-    <Container>
-        <Sidebar>
-            <ListSidebar />
-        </Sidebar>
-        <Content />
-    </Container>
-);
-
-const Dashboard = () => {
-    return (
-        <ContainerDash row padding>
-            <Grid>
-                <Title>Users</Title>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-            </Grid>
-            <Grid>
-                <Title>Persons</Title>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-                <List>Lorem Ipsum</List>
-            </Grid>
-        </ContainerDash>
-    )
+const mapStateToProps = (state) => {
+    return {
+        auth: state.login,
+        persons: state.person
+    }
 }
 
-const Content = () => (
-        <Switch>
-            <Route path="/admin/usuarios" component={Users} />
-            <Route path="/admin/pessoas" component={Persons} />
-            <Route path="/admin/cargos" component={Positions} />
-            <Route path="/admin" component={Dashboard} />
-        </Switch>
-);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        listCustomers: (token) => {
+            dispatch(listCustomers(token))
+        },
+        listEmployees: (token) => {
+            dispatch(listEmployees(token))
+        }
+    }
+}
 
-export default Admin
+export default connect(mapStateToProps, mapDispatchToProps)(Admin)
