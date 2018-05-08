@@ -20,8 +20,7 @@ const Root = ({store}) => {
                 <Header/>
                 <Content>
                     <Switch>
-                        <Route exact path="/login" component={Login}/>
-                        <PrivateRoute path="/post" component={Post}/>
+                        <Route exact path="/" component={Login}/>
                         <PrivateRoute path="/admin" component={Admin}/>
                     </Switch>
                 </Content>
